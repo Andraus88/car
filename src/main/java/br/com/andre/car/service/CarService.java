@@ -35,7 +35,6 @@ public class CarService {
         } else {
             throw new CarBrandNotAllowedException("Brand is not allowed!");
         }
-        carRepository.save(car);
     }
 
     public CarDtoResponse getByID(Long idChassi) {
