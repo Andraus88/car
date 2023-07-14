@@ -1,5 +1,7 @@
 package br.com.andre.car.controller;
 
+import br.com.andre.car.dto.CarDtoRequest;
+import br.com.andre.car.dto.CarDtoResponse;
 import br.com.andre.car.entity.Car;
 import br.com.andre.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,13 @@ public class CarController {
 
     // Para salvar no banco de dados:
     @PostMapping("/post")
-    public Car post(@RequestBody Car car) {
-        return carService.save(car);
+    public String post(@RequestBody CarDtoRequest carDtoRequest) {
+        carService.save(carDtoRequest);
+        return "Successful post!";
     }
 
     @GetMapping("/get/{idChassi}")
-    public Car post (@PathVariable Long idChassi) {
+    public CarDtoResponse get(@PathVariable Long idChassi) {
         return carService.getByID(idChassi);
     }
 }

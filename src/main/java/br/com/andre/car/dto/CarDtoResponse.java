@@ -1,13 +1,7 @@
-package br.com.andre.car.entity;
+package br.com.andre.car.dto;
 
-import javax.persistence.*;
+public class CarDtoResponse {
 
-@Entity
-@Table(name = "car_tb")
-public class Car {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChassi;
 
     private String name;
@@ -18,10 +12,7 @@ public class Car {
 
     private String fabricationYear;
 
-    public Car() {
-    }
-
-    public Car(Long idChassi, String name, String brand, String color, String fabricationYear) {
+    public CarDtoResponse(Long idChassi, String name, String brand, String color, String fabricationYear) {
         this.idChassi = idChassi;
         this.name = name;
         this.brand = brand;
@@ -29,6 +20,7 @@ public class Car {
         this.fabricationYear = fabricationYear;
     }
 
+    // Começo do GETTER/SETTER - com ID
     public Long getIdChassi() {
         return idChassi;
     }
@@ -67,16 +59,5 @@ public class Car {
 
     public void setFabricationYear(String fabricationYear) {
         this.fabricationYear = fabricationYear;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "idChassi=" + idChassi +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", color='" + color + '\'' +
-                ", fabricationYear='" + fabricationYear + '\'' +
-                '}';
     }
 }
