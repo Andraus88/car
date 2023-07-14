@@ -3,16 +3,14 @@ package br.com.andre.car.service;
 import br.com.andre.car.dto.CarDtoRequest;
 import br.com.andre.car.dto.CarDtoResponse;
 import br.com.andre.car.entity.Car;
+import br.com.andre.car.exception.CarBrandNotAllowedException;
 import br.com.andre.car.exception.CarNotFoundException;
 import br.com.andre.car.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class CarService {
@@ -20,7 +18,8 @@ public class CarService {
     @Autowired
     CarRepository carRepository;
 
-    public void save(CarDtoRequest carDtoRequest) {
+    public void save(CarDtoRequest carDtoRequest) throws CarBrandNotAllowedException {
+
 
         Car car = new Car(
                 null,
@@ -29,6 +28,13 @@ public class CarService {
                 carDtoRequest.getColor(),
                 carDtoRequest.getFabricationYear()
         );
+
+        List<String> allowedBrands = Arrays.asList("Ford", "Chevrolet", "BMW", "Volvo");
+        if (allowedBrands.contains(car.getBrand())) {
+            carRepository.save(car);
+        } else {
+            throw new CarBrandNotAllowedException("Brand is not allowed!");
+        }
         carRepository.save(car);
     }
 
