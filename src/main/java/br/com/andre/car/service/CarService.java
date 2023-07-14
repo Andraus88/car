@@ -11,16 +11,12 @@ public class CarService {
     @Autowired
     CarRepository carRepository;
 
-    public String getString() {
-            return "Dentro do service";
-        }
-
     public Car save(Car car) {
         carRepository.save(car);
         return car;
     }
 
     public Car getByID(Long idChassi) {
-        return carRepository.getById(idChassi);
+        return carRepository.findById(idChassi).orElseThrow();
     }
 }

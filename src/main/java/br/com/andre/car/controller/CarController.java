@@ -12,10 +12,6 @@ public class CarController {
 
     @Autowired
     CarService carService;
-    @GetMapping("/get")
-    public String get(){
-        return carService.getString();
-    }
 
     // Para salvar no banco de dados:
     @PostMapping("/post")
