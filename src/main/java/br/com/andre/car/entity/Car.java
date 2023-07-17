@@ -1,6 +1,7 @@
 package br.com.andre.car.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "car_tb")
@@ -10,12 +11,16 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChassi;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String brand;
 
+    @NotNull
     private String color;
 
+    @NotNull
     private String fabricationYear;
 
     public Car() {

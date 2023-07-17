@@ -2,7 +2,7 @@ package br.com.andre.car.controller;
 
 import br.com.andre.car.dto.CarDtoRequest;
 import br.com.andre.car.dto.CarDtoResponse;
-import br.com.andre.car.exception.CarBrandNotAllowedException;
+import br.com.andre.car.exception.CarNotAllowedException;
 import br.com.andre.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class CarController {
 
     // Para salvar no banco de dados:
     @PostMapping("/post")
-    public String post(@RequestBody CarDtoRequest carDtoRequest) throws CarBrandNotAllowedException {
+    public String post(@RequestBody CarDtoRequest carDtoRequest) throws CarNotAllowedException {
         carService.save(carDtoRequest);
         return "Successful post!";
     }

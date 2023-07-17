@@ -1,5 +1,7 @@
 package br.com.andre.car.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class CarDtoRequest {
 
     private String name;
@@ -11,6 +13,7 @@ public class CarDtoRequest {
     private String fabricationYear;
 
     // Começo do GETTER/SETTER - sem ID por que o DB faz
+
     public String getName() {
         return name;
     }
@@ -43,3 +46,4 @@ public class CarDtoRequest {
         this.fabricationYear = fabricationYear;
     }
 }
+

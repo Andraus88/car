@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.FORBIDDEN)
-public class CarBrandNotAllowedException extends Exception {
+public class CarNotAllowedException extends Exception {
 
-    public CarBrandNotAllowedException(String message) {
+    public CarNotAllowedException(String message) {
         super(message);
     }
 }
